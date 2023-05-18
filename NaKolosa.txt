@@ -1,0 +1,34 @@
+int* zarezerwujPamiec() {
+    int* ptr = new int;
+    return ptr;
+}
+
+int main() {
+    int* ptr = zarezerwujPamiec();
+    *ptr = 10;
+
+    printf("Wartość: %d\n", *ptr);  // powinno wypisać "Wartość: 10"
+
+    free(ptr);  // zwalniamy zaalokowaną pamięć
+
+    return 0;
+}
+
+void przepiszWartosc(int n, int* w) {
+    *w = n;
+}
+
+#include <stdio.h>
+
+int main() {
+    int x = 5;
+    int y;
+
+    przepiszWartosc(x, &y);
+
+    printf("x: %d\n", x);  // powinno wypisać "x: 5"
+    printf("y: %d\n", y);  // powinno wypisać "y: 5"
+
+    return 0;
+}
+
